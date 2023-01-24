@@ -8,9 +8,14 @@ require "ruby/openai" # https://github.com/alexrudall/ruby-openai
 
 # from this directory run the interactive ruby interpreter:
 # irb
+
 # require_relative './chat_gpt'
 # chat = ChatGPT.query # will run default query: What is the meaning of life?
 # or pass it a parameter
+# Perhaps you want to save the output of the query?
+# chat.save(filename)
+
+# see TODOs for ideas on whats next.... 
 
 class ChatGPT
   @output = ""
@@ -32,8 +37,15 @@ class ChatGPT
     File.write(filename,@output.first)
   end
 
-  def self.query_about_url(url, prompt = "what is wrong with this url")
+  def self.query_about_url(url, prompt = "what is wrong with this: ")
+    content = self.get_content_from_url url
+    prompt = prompt + content
+    self.query prompt
+  end
+
+  def self.get_content_from_url(url)
     # retrieve the first 1k at a url
+    content = ""
   end
 
   # TODO def self.write_tests_that(prompt="write the tests in rspec for FizzBuzz")
@@ -47,7 +59,7 @@ class ChatGPT
   # end
 
   # DONOTDO def def.execute_code
-  #  do not do this
+  #  do not EVER do this
   # end
 
   # TODO consider def.executute_rspec_tests
