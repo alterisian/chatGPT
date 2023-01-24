@@ -1,6 +1,12 @@
 require "ruby/openai" # https://github.com/alexrudall/ruby-openai
 # usage:
+# get api key: https://beta.openai.com/account/api-keys
+# save to environment variable: OPENAI_API_KEY
 
+# if you do not have ruby, install it: https://www.ruby-lang.org/en/documentation/installation
+# if you do not have bundler to install gems, install it: https://github.com/rubygems/rubygems/tree/master/bundler
+
+# from this directory run the interactive ruby interpreter:
 # irb
 # require_relative './chat_gpt'
 # chat = ChatGPT.query # will run default query: What is the meaning of life?
@@ -25,4 +31,25 @@ class ChatGPT
   def self.save(filename)
     File.write(filename,@output.first)
   end
+
+  def self.query_about_url(url, prompt = "what is wrong with this url")
+    # retrieve the first 1k at a url
+  end
+
+  # TODO def self.write_tests_that(prompt="write the tests in rspec for FizzBuzz")
+  # end
+
+  # TODO def self.write_implementation_that_passes_these_tests(url)
+  # end
+
+  # TODO def self.commit_code
+  # commiting code so a sandbox can execute the tests feels safer, right?
+  # end
+
+  # DONOTDO def def.execute_code
+  #  do not do this
+  # end
+
+  # TODO consider def.executute_rspec_tests
+  # end
 end
