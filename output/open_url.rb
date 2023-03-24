@@ -3,13 +3,16 @@
 require 'net/http'
 require 'open-uri'
 
-begin
-  uri = open('http://example.com/') # replace example.com with your URL
-  result = Net::HTTP.get_response(uri)
-  data = result.body
-  result = data.slice!(0..1000) # get first 1k characters
-rescue
-  puts "An error occurred while fetching your data." # handle exceptions
-end
+def retrieve_url(url)
+  begin
+    uri = open( url, 'rb' )
+    result = Net::HTTP.get(uri)
+    data = result.body
+    result = data.slice!(0..1000) # get first 1k characters
+    puts result.to_s
+  rescue
+    puts "An error occurred while fetching your data."
+  end
 
-puts result.to_s # output contents as string
+  result
+end

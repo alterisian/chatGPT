@@ -1,4 +1,5 @@
 # Prompt: ChatGPT.query("Write some ruby that downloads the first 1k at a url and catches exceptions that occur")
+
 require 'open-uri'
 
 def url_reader(url, output)
